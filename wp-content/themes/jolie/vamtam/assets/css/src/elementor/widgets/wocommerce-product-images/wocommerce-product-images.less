@@ -1,0 +1,110 @@
+// Product Images.
+.elementor-widget-woocommerce-product-images {
+	// Base Theme Widget Styles.
+	&.vamtam-has-theme-widget-styles {
+		div.images {
+			margin: 0px;
+
+			img {
+				transition-duration: 0s;
+			}
+
+			ol.flex-control-thumbs {
+				display: flex;
+				flex-direction: column;
+				max-width: 100px;
+				margin-right: 5px;
+
+				.woocommerce div.product & li {
+					width: 100%;
+					margin-bottom: 5px;
+				}
+
+				li {
+					img {
+						opacity: 1;
+						border-bottom: solid 2px transparent;
+						transition: all 0.3s ease;
+						min-height: 150px;
+
+						&:hover {
+							border-color: var(--vamtam-accent-color-1);
+						}
+					}
+					img.flex-active {
+						border-color: var(--vamtam-accent-color-1);
+					}
+
+				}
+			}
+
+			.flex-viewport {
+				.woocommerce-product-gallery__image {
+					transition: opacity .3s ease;
+					&:not(.flex-active-slide) {
+						opacity: 0;
+					}
+				}
+			}
+		}
+
+		.woocommerce-product-gallery {
+			display: flex;
+			flex-direction: row-reverse;
+
+			> :is(.flex-viewport, .flex-control-thumbs, .woocommerce-product-gallery__wrapper) {
+				flex: 1;
+			}
+
+			img:hover {
+				filter: none;
+			}
+		}
+
+		.woocommerce-product-gallery {
+			&.vamtam-hide {
+				opacity: 0 !important;
+			}
+		}
+
+		span.onsale {
+			display: flex !important;
+			justify-content: center;
+			align-items: center;
+			top: 0;
+			left: 0;
+			right: auto;
+			border-radius: 5px 0 0 0;
+			margin: 0;
+			background-color: var(--vamtam-onsale-bg-color, #77a464);
+			&::after {
+				content: ' ';
+				position: absolute;
+				width: 0;
+				height: 0;
+				left: 0px;
+				right: auto;
+				top: auto;
+				bottom: -7px;
+				border: 7px solid;
+				border-color: transparent transparent transparent var(--vamtam-onsale-bg-color, #77a464);
+			}
+		}
+
+		&.vamtam-onsale-right {
+			span.onsale {
+				border-radius: 0 5px 0 0;
+				&::after {
+					left: auto;
+					right: 0;
+					border-color: transparent var(--vamtam-onsale-bg-color, #77a464) transparent transparent;
+				}
+			}
+		}
+		&:not(.vamtam-has-onsale-yes) {
+			span.onsale {
+				display: none !important;
+			}
+		}
+	}
+}
